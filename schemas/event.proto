@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package my_package;
+
+message MyEvent {
+  string id = 1;
+  string name = 2;
+  int32 count = 3;
+}
