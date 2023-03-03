@@ -1,12 +1,47 @@
-version: '3'
+version: '3.9'
 services:
-  my-service:
+  service1:
     build:
       context: .
-      dockerfile: Dockerfile
+      target: service1
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
       PULSAR_TOPIC: my-topic
+    volumes:
+      - .:/app
+    depends_on:
+      - pulsar-broker
+  service2:
+    build:
+      context: .
+      target: service2
+    environment:
+      PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+      PULSAR_TOPIC: my-topic
+    volumes:
+      - .:/app
+    depends_on:
+      - pulsar-broker
+  service3:
+    build:
+      context: .
+      target: service3
+    environment:
+      PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+      PULSAR_TOPIC: my-topic
+    volumes:
+      - .:/app
+    depends_on:
+      - pulsar-broker
+  service4:
+    build:
+      context: .
+      target: service4
+    environment:
+      PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+      PULSAR_TOPIC: my-topic
+    volumes:
+      - .:/app
     depends_on:
       - pulsar-broker
 
