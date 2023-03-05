@@ -54,7 +54,7 @@ services:
       - pulsar-broker
 
   pulsar-broker:
-    image: apachepulsar/pulsar:latest
+    image: apachepulsar/pulsar:2.9.1
     command: bin/pulsar standalone
     ports:
       - 6650:6650

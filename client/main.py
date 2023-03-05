@@ -11,7 +11,7 @@ from schemas.orden_pb2 import Orden
 
 
 def create_order():
-    client = pulsar.Client('pulsar://pulsar-broker:6650')
+    client = pulsar.Client('pulsar://localhost:6650')
 
     producer = client.create_producer('orden-creada')
 

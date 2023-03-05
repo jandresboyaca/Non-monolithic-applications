@@ -10,7 +10,7 @@ class Orden(Base):
     status: str
 
 
-db = Database("postgresql://ordenes_user:123@order-db:5432/ordenes_service")
+db = Database("postgresql://ordenes_user:123@localhost:5432/ordenes_service")
 db.create(Orden)
 
 
