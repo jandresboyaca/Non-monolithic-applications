@@ -1,0 +1,5 @@
+pulsar-client==3.0.0
+protobuf==4.22.0
+asyncio==3.4.3
+psycopg2-binary==2.9.5
+sqlalchemy-orm==1.2.4

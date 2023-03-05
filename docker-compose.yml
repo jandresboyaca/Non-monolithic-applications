@@ -51,10 +51,10 @@ services:
       - .:/app
     depends_on:
       - pulsar-broker
-  service3:
+  reporting:
     build:
       context: .
-      target: service3
+      target: reporting
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
     volumes:

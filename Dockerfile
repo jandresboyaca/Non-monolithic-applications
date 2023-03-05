@@ -12,9 +12,9 @@ FROM base as service2
 RUN pip install -r client/requirements.txt --compile --no-cache-dir
 CMD ["python", "client/main.py"]
 
-FROM base as service3
+FROM base as reporting
 RUN pip install -r service3/requirements.txt --compile --no-cache-dir
-CMD ["python", "service3/main.py"]
+CMD ["python", "reporting/main.py"]
 
 FROM base as service4
 RUN pip install -r service4/requirements.txt --compile --no-cache-dir
