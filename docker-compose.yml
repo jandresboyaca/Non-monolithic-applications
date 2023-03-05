@@ -17,6 +17,7 @@ services:
       target: service1
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+      POSTGRES_URL: postgresql://ordenes_user:123@order-db:5432/ordenes_service
     volumes:
       - .:/app
     depends_on:

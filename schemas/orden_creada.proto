@@ -2,10 +2,11 @@ syntax = "proto3";
 
 package my_package;
 
-message Orden {
+message OrdenCreada {
   string id = 1;
   int32 client_id = 2;
   string address = 3;
   string status = 4;
   float created_at = 5;
+  string service = 6;
 }

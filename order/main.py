@@ -1,4 +1,3 @@
-import logging
 import os
 import sys
 
@@ -8,17 +7,15 @@ sys.path.append(parent)
 
 import asyncio
 
-from order.infraestructura import recibir_ordenes
-logger = logging.getLogger('test')
-logger.setLevel(logging.DEBUG)
-consola = logging.StreamHandler()
-consola.setLevel(logging.DEBUG)
-logger.addHandler(consola)
+from order.infraestructura import uow, almacenar_orden, crear_evento
 
-async def uow():
-    await recibir_ordenes()
-    # almacenar_orden(ordenes)
+
+async def main():
+    await uow(
+        almacenar_orden=almacenar_orden,
+        crear_evento=crear_evento
+    )
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(uow())
+    loop.run_until_complete(main())
