@@ -1,23 +1,33 @@
 version: '3.9'
 services:
-  service1:
+  order-db:
+    image: "postgis/postgis:14-3.3-alpine"
+    environment:
+      POSTGRES_DB: ordenes_service
+      POSTGRES_USER: ordenes_user
+      POSTGRES_PASSWORD: 123
+      POSTGRES_PORT: 5432
+    ports:
+      - "5432:5432"
+    volumes:
+      - orders_data:/var/lib/postgresql/data
+  order:
     build:
       context: .
       target: service1
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
-      PULSAR_TOPIC: my-topic
     volumes:
       - .:/app
     depends_on:
       - pulsar-broker
-  service2:
+      - order-db
+  client:
     build:
       context: .
       target: service2
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
-      PULSAR_TOPIC: my-topic
     volumes:
       - .:/app
     depends_on:
@@ -28,7 +38,6 @@ services:
       target: service3
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
-      PULSAR_TOPIC: my-topic
     volumes:
       - .:/app
     depends_on:
@@ -39,15 +48,19 @@ services:
       target: service4
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
-      PULSAR_TOPIC: my-topic
     volumes:
       - .:/app
     depends_on:
       - pulsar-broker
 
   pulsar-broker:
-    image: apachepulsar/pulsar:2.9.1
+    image: apachepulsar/pulsar:latest
     command: bin/pulsar standalone
     ports:
       - 6650:6650
       - 8080:8080
+
+volumes:
+  orders_data:
+  esdata01:
+    driver: local

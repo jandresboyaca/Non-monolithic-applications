@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package my_package;
+
+message Orden {
+  string id = 1;
+  int32 client_id = 2;
+  string address = 3;
+  string status = 4;
+}

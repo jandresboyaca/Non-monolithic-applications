@@ -1,1 +1,1 @@
-from .event_pb2 import *
+from .orden_pb2 import *
