@@ -20,6 +20,24 @@ services:
       POSTGRES_URL: postgresql://ordenes_user:123@order-db:5432/ordenes_service
     volumes:
       - .:/app
+    deploy:
+      replicas: 2
+      mode: replicated
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: '50M'
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == worker
+      update_config:
+        parallelism: 2
+        delay: 10s
+      rollback_config:
+        parallelism: 1
+        delay: 10s
     depends_on:
       - pulsar-broker
       - order-db

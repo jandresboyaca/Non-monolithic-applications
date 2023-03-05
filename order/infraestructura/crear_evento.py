@@ -15,7 +15,7 @@ service_id = str(uuid.uuid4())
 
 
 def crear_evento(order):
-    logger.info("Crear evento %s", str(order.id))
+    logger.info("Crear evento %s, %s", str(order.id), service_id)
     client = pulsar.Client(os.environ.get('PULSAR_BROKER_URL'))
 
     producer = client.create_producer('orden-creada')
