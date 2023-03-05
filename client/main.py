@@ -11,22 +11,25 @@ from schemas.orden_pb2 import Orden
 
 
 def create_order():
-    client = pulsar.Client('pulsar://localhost:6650')
+    try:
+        client = pulsar.Client('pulsar://pulsar-broker:6650')
 
-    producer = client.create_producer('orden-creada')
+        producer = client.create_producer('crear-orden')
 
-    event = Orden()
-    event.id = "123"
-    event.client_id = 1
-    event.address = "cll falsa 123"
-    event.status = "pending"
+        event = Orden()
+        event.id = "999989"
+        event.client_id = 1
+        event.address = "cll falsa 123"
+        event.status = "pending"
 
-    event_bytes = event.SerializeToString()
+        event_bytes = event.SerializeToString()
 
-    producer.send(event_bytes)
+        producer.send(event_bytes)
 
-    producer.close()
-    client.close()
+        # producer.close()
+        # client.close()
+    except pulsar.ClientConnectionError as e:
+        print(f"Failed to connect to Pulsar broker: {e}")
 
 
 if __name__ == '__main__':

@@ -54,13 +54,21 @@ services:
       - pulsar-broker
 
   pulsar-broker:
-    image: apachepulsar/pulsar:2.9.1
+    image: apachepulsar/pulsar:latest
     command: bin/pulsar standalone
+    environment:
+      PULSAR_MEM: "-Xms512m -Xmx512m"
+      PULSAR_CONF: "/pulsar/conf"
     ports:
       - 6650:6650
       - 8080:8080
+    volumes:
+      - pulsar_data:/pulsar/data
+      - pulsar_conf:/pulsar/conf
 
 volumes:
+  pulsar_conf:
+  pulsar_data:
   orders_data:
   esdata01:
     driver: local
