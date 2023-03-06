@@ -13,7 +13,7 @@ RUN pip install -r client/requirements.txt --compile --no-cache-dir
 CMD ["python", "client/main.py"]
 
 FROM base as reporting
-RUN pip install -r service3/requirements.txt --compile --no-cache-dir
+RUN pip install -r reporting/requirements.txt --compile --no-cache-dir
 CMD ["python", "reporting/main.py"]
 
 FROM base as service4

@@ -17,13 +17,13 @@ def create_report(order):
 
 def create_csv(order):
     datos = MessageToDict(order)
-    with open('../reports/result_{}.csv'.format(datos['id']), 'w') as file:
+    with open('./reporting/reports/result_{}.csv'.format(datos['id']), 'w') as file:
         writer = csv.writer(file)
-        writer.writerow([datos['id'], datos['clientId'], datos['address'], datos['status'],datetime.fromtimestamp(datos['createdAt']),datos['service']])
+        writer.writerow([datos['id'], datos['clientId'], datos['address'], datos['status'], datetime.fromtimestamp(datos['createdAt']), datos['service']])
     file.close()
 
 
 def create_json(order):
     datos = MessageToJson(order)
-    with open('../reports/result_{}.json'.format(datos['id']), 'w') as f:
+    with open('./reporting/reports/result_{}.json'.format(datos['id']), 'w') as f:
         json.dump(datos, f)

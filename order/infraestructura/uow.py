@@ -1,6 +1,6 @@
 import logging
 import os
-from pulsar import Client, Message, MessageId, ConsumerType
+from pulsar import Client, ConsumerType
 
 from schemas.orden_pb2 import Orden
 
