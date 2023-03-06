@@ -6,7 +6,7 @@ RUN pip3 install --upgrade pip
 
 FROM base as service1
 RUN pip install -r order/requirements.txt --compile --no-cache-dir
-CMD ["python", "order/main.py"]
+CMD ["/bin/bash", "-c", "python order/main.py & python order/main2.py;tail -f /dev/null"]
 
 FROM base as service2
 RUN pip install -r client/requirements.txt --compile --no-cache-dir
@@ -17,7 +17,7 @@ RUN pip install -r reporting/requirements.txt --compile --no-cache-dir
 CMD ["python", "reporting/main.py"]
 
 FROM base as service4
-RUN pip install -r service4/requirements.txt --compile --no-cache-dir
-CMD ["python", "service4/main.py"]
+RUN pip install -r pagos/requirements.txt --compile --no-cache-dir
+CMD ["python", "pagos/main.py"]
 
 EXPOSE 8080

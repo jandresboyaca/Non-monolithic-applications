@@ -11,7 +11,19 @@ services:
       - "5432:5432"
     volumes:
       - orders_data:/var/lib/postgresql/data
+  pagos-db:
+    image: "postgis/postgis:14-3.3-alpine"
+    environment:
+      POSTGRES_DB: pagos_service
+      POSTGRES_USER: pagos_user
+      POSTGRES_PASSWORD: 123
+      POSTGRES_PORT: 5432
+    ports:
+      - "5433:5432"
+    volumes:
+      - pagos_data:/var/lib/postgresql/data
   order:
+    tty: true
     build:
       context: .
       target: service1
@@ -61,16 +73,18 @@ services:
       - .:/app
     depends_on:
       - pulsar-broker
-  service4:
+  pagos:
     build:
       context: .
       target: service4
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+      POSTGRES_URL: postgresql://pagos_user:123@pagos-db:5432/pagos_service
     volumes:
       - .:/app
     depends_on:
       - pulsar-broker
+      - pagos-db
 
   pulsar-broker:
     image: apachepulsar/pulsar:latest
@@ -89,5 +103,6 @@ volumes:
   pulsar_conf:
   pulsar_data:
   orders_data:
+  pagos_data:
   esdata01:
     driver: local

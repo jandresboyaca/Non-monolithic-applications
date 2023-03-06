@@ -2,33 +2,34 @@ import logging
 import os
 from pulsar import Client, ConsumerType
 
-from schemas.orden_pb2 import Orden
+from schemas.transaccion_procesada_pb2 import TransaccionProcesada
 
-logger = logging.getLogger('uow:order')
+logger = logging.getLogger('uow2:order')
 logger.setLevel(logging.DEBUG)
 consola = logging.StreamHandler()
 consola.setLevel(logging.DEBUG)
 logger.addHandler(consola)
 
 
-async def uow(**kwargs):
+async def uow2(**kwargs):
     client = Client(os.environ.get('PULSAR_BROKER_URL'))
     consumer = client.subscribe(
-        topic="crear-orden",
+        topic="transaccion-creada",
         subscription_name="my-subscription",
         consumer_type=ConsumerType.Shared
     )
     while True:
         try:
             msg = consumer.receive()
-            command = Orden()
+            command = TransaccionProcesada()
             command.ParseFromString(msg.data())
-            logger.info("Received message with ID %s: %s" % (msg.message_id(), command))
+            logger.info("Received transaccion-creada with ID %s: %s" % (msg.message_id(), command))
+            order = None
             for key, step in kwargs.items():
-                if key == "almacenar_orden":
-                    step(command)
+                if key == "actualizar_orden":
+                    order = step(command)
                 if key == "crear_evento":
-                    step(command, "orden-creada")
+                    step(order, "orden-actualizada")
             consumer.acknowledge(msg)
         except Exception as e:
             logger.info("Failed to process message with ID  %s" % (e))

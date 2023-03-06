@@ -15,7 +15,7 @@ from reporting.infraestructura import on_orden_created
 async def uow():
     client = Client(os.environ.get('PULSAR_BROKER_URL'))
     consumer = client.subscribe(
-        topic="orden-creada",
+        topic="orden-actualizada",
         subscription_name="reporting " + str(uuid.uuid4()),
         consumer_type=ConsumerType.Shared
     )

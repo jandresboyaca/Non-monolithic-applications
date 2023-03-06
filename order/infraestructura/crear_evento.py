@@ -14,11 +14,11 @@ logger.addHandler(consola)
 service_id = str(uuid.uuid4())
 
 
-def crear_evento(order):
+def crear_evento(order, topic):
     logger.info("Crear evento %s, %s", str(order.id), service_id)
     client = pulsar.Client(os.environ.get('PULSAR_BROKER_URL'))
 
-    producer = client.create_producer('orden-creada')
+    producer = client.create_producer(topic)
     event = OrdenCreada()
     event.id = order.id
     event.client_id = order.client_id
