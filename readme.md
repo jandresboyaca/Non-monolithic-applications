@@ -123,8 +123,8 @@ En dicho caso, la orden creada nos da los datos necesarios para calcular el pago
 
 1. Si durante la generacion de protos presenta un error con grpcio-tools de que el modulo no fue encontrado ejecute `pip install grpcio-tools`
 
-### Escearios de calidad
+### Escenarios de calidad
 
-- Desempeño: 
-- Modificabilidad:
+- Desempeño: El sistema debe ser capaz de atender 1000 ordenes por minuto manteniendo un desempeño constante
+- Modificabilidad: agregar otros formatos de reportes con facilidad y sin impactar la funcionalidad
 - Escalabilidad: El sistema debe ser capaz de soportar una alta demanda de ordenes, en caso que el contenedor se estrese en cuanto a memoria, cpu o disco, se debe poder escalar el servicio de manera horizontal.
