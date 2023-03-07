@@ -34,7 +34,7 @@ almacenamiento. Es su decisión definir que servicios pueden usar una u otra
 
 ### Diagrama de arquitectura 
 
-![alpes poc](https://user-images.githubusercontent.com/1644662/223300319-da77e029-1bde-4daf-8428-8f1f3d150de5.jpg)
+![alpes poc](https://user-images.githubusercontent.com/1644662/223301286-19ffea8d-16dc-46cb-9100-8caf85981ef8.jpg)
 
 ### Arrancar los servicios
 
