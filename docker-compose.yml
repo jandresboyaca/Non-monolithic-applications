@@ -33,7 +33,7 @@ services:
     volumes:
       - .:/app
     deploy:
-      replicas: 2
+      replicas: 1
       mode: replicated
       resources:
         limits:

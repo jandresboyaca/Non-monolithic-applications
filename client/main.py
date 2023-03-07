@@ -37,7 +37,7 @@ def create_order():
         client = pulsar.Client(os.environ.get('PULSAR_BROKER_URL'))
 
         producer = client.create_producer('crear-orden')
-        for i in range(0, 100):
+        for i in range(0, 10):
             command = Orden()
             order_dict = get_order_data()
             command.id = order_dict["id"]
