@@ -122,3 +122,9 @@ En dicho caso, la orden creada nos da los datos necesarios para calcular el pago
 ### Errores comunes
 
 1. Si durante la generacion de protos presenta un error con grpcio-tools de que el modulo no fue encontrado ejecute `pip install grpcio-tools`
+
+### Escearios de calidad
+
+- Desempeño: 
+- Modificabilidad:
+- Escalabilidad: El sistema debe ser capaz de soportar una alta demanda de ordenes, en caso que el contenedor se estrese en cuanto a memoria, cpu o disco, se debe poder escalar el servicio de manera horizontal.
