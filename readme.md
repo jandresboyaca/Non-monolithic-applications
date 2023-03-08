@@ -29,12 +29,13 @@ almacenamiento. Es su decisión definir que servicios pueden usar una u otra
 - Python
 - Docker
 - Docker Compose
-- Apache Pulsar
+- Apache Pulsar 
 - Apache Protobuf
 
 ### Diagrama de arquitectura 
 
-![alpes poc](https://user-images.githubusercontent.com/1644662/223301286-19ffea8d-16dc-46cb-9100-8caf85981ef8.jpg)
+![alpes poc](https://user-images.githubusercontent.com/31944043/223587671-b1b5bcc1-a850-45b9-bcec-9d6e758f72aa.png)
+
 
 ### Arrancar los servicios
 
