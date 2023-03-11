@@ -7,7 +7,6 @@ from google.protobuf.json_format import MessageToDict, MessageToJson
 
 
 def create_report(order):
-    print(order)
     version = os.environ.get('OLD_VERSION')
     if version:
         create_json(order)

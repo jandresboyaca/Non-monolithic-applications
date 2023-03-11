@@ -20,4 +20,9 @@ FROM base as service4
 RUN pip install -r pagos/requirements.txt --compile --no-cache-dir
 CMD ["python", "pagos/main.py"]
 
+FROM base as saga_log
+RUN pip install -r saga_log/requirements.txt --compile --no-cache-dir
+CMD ["python", "saga_log/main.py"]
+
+
 EXPOSE 8080

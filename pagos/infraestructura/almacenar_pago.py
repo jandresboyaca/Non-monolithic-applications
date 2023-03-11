@@ -42,7 +42,7 @@ def almacenar_pago(orden):
         status=statuses[fake.random_int(min=0, max=1)],
         created_at=datetime.now()
     )
-    transaction_dict = {"id": db_transaccion.id, "status": db_transaccion.status}
+    transaction_dict = {"id": db_transaccion.id, "status": db_transaccion.status, "created_at": db_transaccion.created_at}
     session.create(db_transaccion)
     session.commit()
     return transaction_dict

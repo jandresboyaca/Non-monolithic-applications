@@ -1,6 +1,7 @@
 import logging
 
-from reporting.infraestructura.almacenar_orden import create_report
+from .almacenar_orden import create_report
+from .crear_log import crear_log
 from schemas.orden_creada_pb2 import OrdenCreada
 
 logger = logging.getLogger('reporting-logger')
@@ -18,6 +19,7 @@ def on_orden_created(consumer):
             order.ParseFromString(msg.data())
             logger.info("Received message with ID %s: %s" % (msg.message_id(), order))
             create_report(order)
+            crear_log(order)
             consumer.acknowledge(msg)
         except Exception as e:
-            logger.info("Failed to process message with ID  %s" % (e))
+            logger.error("Failed to process message with ID  %s" % (e))

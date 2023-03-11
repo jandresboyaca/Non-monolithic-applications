@@ -7,13 +7,14 @@ sys.path.append(parent)
 
 import asyncio
 
-from pagos.infraestructura import uow, almacenar_pago, crear_evento
+from pagos.infraestructura import uow, almacenar_pago, crear_evento, crear_log
 
 
 async def main():
     await uow(
         almacenar_pago=almacenar_pago,
-        crear_evento=crear_evento
+        crear_evento=crear_evento,
+        crear_log=crear_log
     )
 
 if __name__ == '__main__':

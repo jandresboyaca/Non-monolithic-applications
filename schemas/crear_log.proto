@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package my_package;
+
+message CrearLog {
+  string id = 1;
+  string entidad = 2;
+  string estado = 3;
+  float created_at = 4;
+}

@@ -85,6 +85,16 @@ services:
     depends_on:
       - pulsar-broker
       - pagos-db
+  saga_log:
+    build:
+      context: .
+      target: saga_log
+    environment:
+      PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+    volumes:
+      - .:/app
+    depends_on:
+      - pulsar-broker
 
   pulsar-broker:
     image: apachepulsar/pulsar:latest

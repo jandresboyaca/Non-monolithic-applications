@@ -7,13 +7,14 @@ sys.path.append(parent)
 
 import asyncio
 
-from order.infraestructura import uow, almacenar_orden, crear_evento
+from order.infraestructura import uow, almacenar_orden, crear_evento, crear_log
 
 
 async def main():
     await uow(
         almacenar_orden=almacenar_orden,
-        crear_evento=crear_evento
+        crear_evento=crear_evento,
+        crear_log=crear_log
     )
 
 if __name__ == '__main__':

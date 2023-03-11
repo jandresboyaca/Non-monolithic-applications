@@ -28,7 +28,7 @@ async def uow(**kwargs):
             for key, step in kwargs.items():
                 if key == "almacenar_pago":
                     transaction = step(event)
-                if key == "crear_evento":
+                if key == "crear_evento" or key == "crear_log":
                     step(event, transaction)
             consumer.acknowledge(msg)
         except Exception as e:

@@ -30,6 +30,8 @@ async def uow2(**kwargs):
                     order = step(command)
                 if key == "crear_evento":
                     step(order, "orden-actualizada")
+                if key == "crear_log":
+                    step(order, "orden actualiazada")
             consumer.acknowledge(msg)
         except Exception as e:
             logger.info("Failed to process message with ID  %s" % (e))
