@@ -34,7 +34,7 @@ almacenamiento. Es su decisión definir que servicios pueden usar una u otra
 
 ### Diagrama de arquitectura 
 
-![alpes poc](https://user-images.githubusercontent.com/31944043/223587671-b1b5bcc1-a850-45b9-bcec-9d6e758f72aa.png)
+![alpes poc](https://user-images.githubusercontent.com/1644662/224517832-5a29a415-e7a6-426a-8996-50d6d25dbdd1.jpg)
 
 
 ### Arrancar los servicios
@@ -86,6 +86,17 @@ La razón de ello es que es más fácil de probar y llegar a una posible de repl
      string status = 4;
      float created_at = 5;
    }
+```
+
+**Crear Log - Comando**
+
+```protobuf
+    message CrearLog {
+      string id = 1;
+      string entidad = 2;
+      string estado = 3;
+      float created_at = 4;
+    }
 ```
 
 **Orden Creada - Evento**
