@@ -14,7 +14,7 @@ CMD ["python", "client/main.py"]
 
 FROM base as reporting
 RUN pip install -r reporting/requirements.txt --compile --no-cache-dir
-CMD ["python", "reporting/main.py"]
+CMD ["/bin/bash", "-c", "python reporting/main.py & python reporting/api.py;tail -f /dev/null"]
 
 FROM base as service4
 RUN pip install -r pagos/requirements.txt --compile --no-cache-dir
@@ -24,5 +24,9 @@ FROM base as saga_log
 RUN pip install -r saga_log/requirements.txt --compile --no-cache-dir
 CMD ["python", "saga_log/main.py"]
 
+
+FROM base as bff
+RUN pip install -r bff/requirements.txt --compile --no-cache-dir
+CMD ["python", "bff/main.py"]
 
 EXPOSE 8080

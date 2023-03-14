@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "6666e726-5c39-42da-9384-f76dbe01319e",
+		"name": "NoMonoliticas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25122390"
+	},
+	"item": [
+		{
+			"name": "Create Order - Direct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:81/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "81",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get report order - Direct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:80/report?id=03861809-4fa4-4833-946f-7c51549d42b0",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"report"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "03861809-4fa4-4833-946f-7c51549d42b0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order - BFF",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost/orders",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get report order - BFF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/report?id=96e279fc-b6e6-4782-a102-293dcbf361da",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"report"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "96e279fc-b6e6-4782-a102-293dcbf361da"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

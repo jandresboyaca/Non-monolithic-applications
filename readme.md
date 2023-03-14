@@ -23,10 +23,12 @@ almacenamiento. Es su decisión definir que servicios pueden usar una u otra
 - Ordenes - Maneja las ordenes de compra
 - Pagos - Maneja los pagos de las ordenes
 - Reporting - Genera reportes de las ordenes
+- BFF - Encargado de crear ordenes y retornar el retorno en un unico punto de acceso
 
 ### Tecnologías
 
 - Python
+- Flask
 - Docker
 - Docker Compose
 - Apache Pulsar 
@@ -34,7 +36,7 @@ almacenamiento. Es su decisión definir que servicios pueden usar una u otra
 
 ### Diagrama de arquitectura 
 
-![alpes poc](https://user-images.githubusercontent.com/1644662/224517832-5a29a415-e7a6-426a-8996-50d6d25dbdd1.jpg)
+![alpes poc drawio (1)](https://user-images.githubusercontent.com/31944043/224868353-361d7241-9bb9-49e1-b144-32940f990565.png)
 
 
 ### Arrancar los servicios
@@ -57,13 +59,17 @@ almacenamiento. Es su decisión definir que servicios pueden usar una u otra
   docker-compose up -d reporting
 ```
 
+**BFF**
+
+```shell
+  docker-compose up -d bff
+```
+
+
+
 **Cliente - Fake de datos**
 
-Entre al servicio y configure en la linea 40 de main.py el numero de ordenes que desea generar
-
-```python
-    for i in range(0, 100): # <- Aquí
-```
+Utilice la [collection](./collections/NoMonoliticas.postman_collection.json) para ejecutar el cliente fake y hacer uso del BFF y de todo el flujo
 
 ```shell
   docker-compose up -d client
@@ -134,6 +140,7 @@ En dicho caso, la orden creada nos da los datos necesarios para calcular el pago
 ### Errores comunes
 
 1. Si durante la generacion de protos presenta un error con grpcio-tools de que el modulo no fue encontrado ejecute `pip install grpcio-tools`
+2. Si el apache pulsar no levanta, borre los volumnes de dicho contenerdor.
 
 ### Escenarios de calidad
 

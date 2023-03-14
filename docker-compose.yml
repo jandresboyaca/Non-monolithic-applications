@@ -59,6 +59,8 @@ services:
       target: service2
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+    ports:
+      - 81:8080
     volumes:
       - .:/app
     depends_on:
@@ -69,6 +71,8 @@ services:
       target: reporting
     environment:
       PULSAR_BROKER_URL: pulsar://pulsar-broker:6650
+    ports:
+      - 82:8080
     volumes:
       - .:/app
     depends_on:
@@ -95,7 +99,20 @@ services:
       - .:/app
     depends_on:
       - pulsar-broker
-
+  bff:
+    build:
+      context: .
+      target: bff
+    environment:
+      REPORTING_URL: http://reporting:8080/
+      ORDER_URL: http://client:8080/
+    ports:
+      - 80:8080
+    volumes:
+      - .:/app
+    depends_on:
+      - reporting
+      - client
   pulsar-broker:
     image: apachepulsar/pulsar:latest
     command: bin/pulsar standalone

@@ -3,3 +3,6 @@ protobuf==4.22.0
 asyncio==3.4.3
 psycopg2-binary==2.9.5
 sqlalchemy-orm==1.2.4
+# Flask
+Flask==2.0.1
+Flask-RESTful==0.3.9
