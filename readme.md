@@ -150,4 +150,4 @@ En dicho caso, la orden creada nos da los datos necesarios para calcular el pago
 
 ### Video de la entrega
 
-https://uniandes-my.sharepoint.com/:v:/g/personal/a_aldanam_uniandes_edu_co/ETegtSsfRwVEgRKHbcQ9fFABDP2M8Zv1M_X1cLFZvjEfbg?e=UYkqIF
+https://uniandes-my.sharepoint.com/:v:/g/personal/j_boyaca_uniandes_edu_co/ETH_tWE5HXpPjJ5SFEmXzzEBBPgjlXmdaKbmGdtgPg5dig?e=oeBQ3o
