@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Create Order - Direct",
+			"name": "Create Order - Direct - Local",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -25,7 +25,7 @@
 			"response": []
 		},
 		{
-			"name": "Get report order - Direct",
+			"name": "Get report order - Direct - Local",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -49,7 +49,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Order - BFF",
+			"name": "Create Order - BFF - Local",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -66,7 +66,7 @@
 			"response": []
 		},
 		{
-			"name": "Get report order - BFF",
+			"name": "Get report order - BFF - Local",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -87,6 +87,136 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Order - Direct - AWS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json()",
+							"const id = response.id",
+							"pm.collectionVariables.set('id', id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "44.200.18.115:8080/orders",
+					"host": [
+						"44",
+						"200",
+						"18",
+						"115"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get report order - Direct - AWS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "44.199.202.98:8080/report?id={{id}}",
+					"host": [
+						"44",
+						"199",
+						"202",
+						"98"
+					],
+					"port": "8080",
+					"path": [
+						"report"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order - BFF - AWS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json()",
+							"const id = response.id",
+							"pm.collectionVariables.set('id', id);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "44.202.210.114:8080/orders",
+					"host": [
+						"44",
+						"202",
+						"210",
+						"114"
+					],
+					"port": "8080",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get report order - BFF - AWS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "44.202.210.114:8080/report?id={{id}}",
+					"host": [
+						"44",
+						"202",
+						"210",
+						"114"
+					],
+					"port": "8080",
+					"path": [
+						"report"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": ""
 		}
 	]
 }
